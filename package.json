@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "moment": "^2.24.0",
     "mongod": "^2.0.0",
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.12"
