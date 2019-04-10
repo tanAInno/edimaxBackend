@@ -1,5 +1,6 @@
 // Import edimax model
 Edimax = require('../model/edimaxModel');
+moment = require('moment');
 // Handle index actions
 exports.index = function (req, res) {
     Edimax.get(function (err, edimaxs) {
@@ -9,6 +10,9 @@ exports.index = function (req, res) {
                 message: err,
             });
         }
+        let sortList = edimaxs.sort(function (a, b) {
+            return moment(b.date_time) - moment(a.date_time)
+        })
         res.json({
             status: "success",
             message: "Edimaxs retrieved successfully",
