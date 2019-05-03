@@ -3,20 +3,20 @@ Edimax = require('../model/edimaxModel');
 moment = require('moment');
 // Handle index actions
 exports.index = function (req, res) {
-    Edimax.get(function (err, edimaxs) {
+    Edimax.get(function (err, edimaxes) {
         if (err) {
             res.json({
                 status: "error",
                 message: err,
             });
         }
-        let sortList = edimaxs.sort(function (a, b) {
+        let sortList = edimaxes.sort(function (a, b) {
             return moment(b.date_time) - moment(a.date_time)
         })
         res.json({
             status: "success",
             message: "Edimaxs retrieved successfully",
-            data: edimaxs
+            data: edimaxes
         });
     });
 };
@@ -39,8 +39,8 @@ exports.new = function (req, res) {
     edimax.date_time = req.body.date_time;
 // save the edimax and check for errors
     edimax.save(function (err) {
-        // if (err)
-        //     res.json(err);
+        if (err)
+            res.json(err);
         res.json({
             message: 'New edimax created!',
             data: edimax
