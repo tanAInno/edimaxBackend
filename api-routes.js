@@ -19,6 +19,14 @@ router.route('/edimaxs/:edimax_id')
     .patch(edimaxController.update)
     .put(edimaxController.update)
     .delete(edimaxController.delete);
+router.route('/products')
+    .get(productController.index)
+    .post(productController.new);
+router.route('/products/:product_id')
+    .get(productController.view)
+    .patch(productController.update)
+    .put(productController.update)
+    .delete(productController.delete);
 router.route('/login')
     .post(loginController.login);
 // Export API routes
