@@ -10,6 +10,7 @@ router.get('/', function (req, res) {
 // Import edimax controller
 var edimaxController = require('./controller/edimaxController');
 var loginController = require('./controller/loginController');
+var productController = require('./controller/productController');
 // Asset routes
 router.route('/edimaxs')
     .get(edimaxController.index)
