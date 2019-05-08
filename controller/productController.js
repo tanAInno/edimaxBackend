@@ -24,6 +24,7 @@ exports.new = function (req, res) {
     product.department = req.body.department;
     product.workplace = req.body.workplace;
     product.productList = req.body.productList;
+    product.paymentOption = req.body.paymentOption;
     product.save(function (err) {
         if (err)
             res.json(err);
@@ -55,6 +56,7 @@ exports.update = function (req, res) {
         product.department = req.body.department;
         product.workplace = req.body.workplace;
         product.productList = req.body.productList;
+        product.paymentOption = req.body.paymentOption;
 // save the product and check for errors
         product.save(function (err) {
             if (err)

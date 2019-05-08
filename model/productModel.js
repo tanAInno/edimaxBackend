@@ -24,6 +24,10 @@ var productSchema = mongoose.Schema({
     productList: {
         type: Array,
         default: []
+    },
+    paymentOption: {
+        type: String,
+        default: ''
     }
 });
 
