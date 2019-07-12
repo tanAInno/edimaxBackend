@@ -5,7 +5,31 @@ var productSchema = mongoose.Schema({
         type: String,
         default: ''
     },
+    surname: {
+        type: String,
+        default: ''
+    },
     email: {
+        type: String,
+        default: ''
+    },
+    company: {
+        type: String,
+        default: ''
+    },
+    address: {
+        type: String,
+        default: ''
+    },
+    province: {
+        type: String,
+        default: ''
+    },
+    district: {
+        type: String,
+        default: ''
+    },
+    subdistrict: {
         type: String,
         default: ''
     },
@@ -13,11 +37,15 @@ var productSchema = mongoose.Schema({
         type: String,
         default: ''
     },
-    department: {
+    zipcode: {
         type: String,
         default: ''
     },
-    workplace: {
+    homephone: {
+        type: String,
+        default: ''
+    },
+    fax: {
         type: String,
         default: ''
     },
@@ -25,7 +53,11 @@ var productSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    paymentOption: {
+    totalprice: {
+        type: String,
+        default: ''
+    },
+    paymentImage: {
         type: String,
         default: ''
     }

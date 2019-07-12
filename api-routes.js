@@ -11,6 +11,7 @@ router.get('/', function (req, res) {
 var edimaxController = require('./controller/edimaxController');
 var loginController = require('./controller/loginController');
 var productController = require('./controller/productController');
+var serviceController = require('./controller/serviceController');
 // Asset routes
 router.route('/edimaxs')
     .get(edimaxController.index)
@@ -28,6 +29,14 @@ router.route('/products/:product_id')
     .patch(productController.update)
     .put(productController.update)
     .delete(productController.delete);
+router.route('/services')
+    .get(serviceController.index)
+    .post(serviceController.new);
+router.route('/services/:service_id')
+    .get(serviceController.view)
+    .patch(serviceController.update)
+    .put(serviceController.update)
+    .delete(serviceController.delete);
 router.route('/login')
     .post(loginController.login);
 // Export API routes

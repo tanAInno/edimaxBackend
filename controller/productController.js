@@ -19,12 +19,20 @@ exports.index = function (req, res) {
 exports.new = function (req, res) {
     var product = new Product();
     product.name = req.body.name;
+    product.surname = req.body.surname;
     product.email = req.body.email;
+    product.company = req.body.company;
+    product.address = req.body.address;
+    product.province = req.body.province;
+    product.district = req.body.district;
+    product.subdistrict = req.body.subdistrict;
     product.phone = req.body.phone;
-    product.department = req.body.department;
-    product.workplace = req.body.workplace;
+    product.zipcode = req.body.zipcode;
+    product.homephone = req.body.homephone;
+    product.fax = req.body.fax;
     product.productList = req.body.productList;
-    product.paymentOption = req.body.paymentOption;
+    product.totalprice = req.body.totalprice;
+    product.paymentImage = req.body.paymentImage;
     product.save(function (err) {
         if (err)
             res.json(err);
@@ -51,13 +59,21 @@ exports.update = function (req, res) {
         if (err)
             res.send(err);
         product.name = req.body.name;
+        product.surname = req.body.surname;
         product.email = req.body.email;
+        product.company = req.body.company;
+        product.address = req.body.address;
+        product.province = req.body.province;
+        product.district = req.body.district;
+        product.subdistrict = req.body.subdistrict;
         product.phone = req.body.phone;
-        product.department = req.body.department;
-        product.workplace = req.body.workplace;
+        product.zipcode = req.body.zipcode;
+        product.homephone = req.body.homephone;
+        product.fax = req.body.fax;
         product.productList = req.body.productList;
-        product.paymentOption = req.body.paymentOption;
-// save the product and check for errors
+        product.totalprice = req.body.totalprice;
+        product.paymentImage = req.body.paymentImage;
+        // save the product and check for errors
         product.save(function (err) {
             if (err)
                 res.json(err);
@@ -75,7 +91,7 @@ exports.delete = function (req, res) {
     }, function (err, product) {
         if (err)
             res.send(err);
-res.json({
+        res.json({
             status: "success",
             message: 'Product deleted'
         });
