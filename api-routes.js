@@ -12,6 +12,8 @@ var edimaxController = require('./controller/edimaxController');
 var loginController = require('./controller/loginController');
 var productController = require('./controller/productController');
 var serviceController = require('./controller/serviceController');
+var couponController = require('./controller/couponController');
+
 // Asset routes
 router.route('/edimaxs')
     .get(edimaxController.index)
@@ -37,6 +39,14 @@ router.route('/services/:service_id')
     .patch(serviceController.update)
     .put(serviceController.update)
     .delete(serviceController.delete);
+router.route('/coupons')
+    .get(couponController.index)
+    .post(couponController.new);
+router.route('/coupons/:coupon_id')
+    .get(couponController.view)
+    .patch(couponController.update)
+    .put(couponController.update)
+    .delete(couponController.delete);
 router.route('/login')
     .post(loginController.login);
 // Export API routes
