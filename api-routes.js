@@ -3,8 +3,8 @@ let router = require('express').Router();
 // Set default API response
 router.get('/', function (req, res) {
     res.json({
-       status: 'API Its Working',
-       message: 'Welcome to RESTHub crafted with love!',
+        status: 'API Its Working',
+        message: 'Welcome to RESTHub crafted with love!',
     });
 });
 // Import edimax controller
@@ -13,6 +13,7 @@ var loginController = require('./controller/loginController');
 var productController = require('./controller/productController');
 var serviceController = require('./controller/serviceController');
 var couponController = require('./controller/couponController');
+var userController = require('./controller/userController');
 
 // Asset routes
 router.route('/edimaxs')
@@ -47,7 +48,29 @@ router.route('/coupons/:coupon_id')
     .patch(couponController.update)
     .put(couponController.update)
     .delete(couponController.delete);
+router.route('/couponbycode/:code')
+    .get(couponController.viewByCode);
+router.route('/usedcoupon/:coupon_id')
+    .put(couponController.usedCoupon)
+router.route('/users')
+    .get(userController.index)
+    .post(userController.new);
+router.route('/users/:user_id')
+    .get(userController.view)
+    .patch(userController.update)
+    .put(userController.update)
+    .delete(userController.delete);
+router.route('/userproduct/:user_id')
+    .put(userController.updateProductOrder)
+router.route('/userservice/:user_id')
+    .put(userController.updateServiceOrder)
+router.route('/userbytoken/:user_accessToken')
+    .get(userController.getUserbyAccessToken);
 router.route('/login')
     .post(loginController.login);
+router.route('/loginadmin')
+    .post(loginController.loginadmin);
+router.route('/updatetoken')
+    .put(loginController.update);
 // Export API routes
 module.exports = router;

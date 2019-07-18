@@ -70,3 +70,26 @@ exports.delete = function (req, res) {
         });
     });
 };
+
+exports.viewByCode = async function (req, res) {
+    let couponResponse = await Coupon.findOne({code: req.params.code})
+    if (couponResponse == null || couponResponse == undefined || couponResponse.used == "used")
+        return res.send({status: "undefined"});
+    return res.json({status: "ok", data: couponResponse});
+}
+
+exports.usedCoupon = function (req, res) {
+    Coupon.findById(req.params.coupon_id, function (err, coupon) {
+        if (err)
+            res.send(err);
+        coupon.used = req.body.used;
+        coupon.save(function (err) {
+            if (err)
+                res.json(err);
+            res.json({
+                message: 'Coupon Info updated',
+                data: coupon
+            });
+        });
+    });
+};
