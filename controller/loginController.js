@@ -27,6 +27,21 @@ exports.loginadmin = async function(req, res) {
     return res.send({status: "login failed"});
 }
 
+exports.loginfacebook = async function(req, res){
+    let userResponse = await User.find({},'username')
+    let usernameFromResponse = userResponse.map((user) => {
+        return user.username
+    })
+    if (usernameFromResponse.indexOf(req.body.username) > -1){
+        return res.json({status: "login success"})
+    }
+    let newUser = new User(req.body);
+    let hashedPassword = passwordHash.generate(Math.floor(Math.random() * Math.floor(20000))+'');
+    newUser.password = hashedPassword
+    await newUser.save()
+    return res.json({status: "login success"})
+}
+
 exports.update = async function(req, res) {
     let userResponse = await User.findOne({username: req.body.username})
     User.findById(userResponse._id, function (err, user) {

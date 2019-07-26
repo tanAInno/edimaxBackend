@@ -70,6 +70,8 @@ router.route('/login')
     .post(loginController.login);
 router.route('/loginadmin')
     .post(loginController.loginadmin);
+router.route('/loginfacebook')
+    .post(loginController.loginfacebook);
 router.route('/updatetoken')
     .put(loginController.update);
 // Export API routes
