@@ -6,10 +6,11 @@ exports.login = async function(req, res) {
     if(userResponse == null)
         return res.send({status: "login failed"});
     let password = userResponse.password
+    let id = userResponse._id
     let result = passwordHash.verify(req.body.password, password);
     let accessToken = passwordHash.generate(Math.floor(Math.random() * Math.floor(100000000))+'');
     if(result){
-        return res.send({status: "login success", accessToken: accessToken});
+        return res.send({status: "login success", accessToken: accessToken, id: id});
     }
     return res.send({status: "login failed"});
 };
