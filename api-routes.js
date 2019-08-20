@@ -14,6 +14,7 @@ var productController = require('./controller/productController');
 var serviceController = require('./controller/serviceController');
 var couponController = require('./controller/couponController');
 var userController = require('./controller/userController');
+var productAdController = require('./controller/productAdController');
 
 // Asset routes
 router.route('/edimaxs')
@@ -32,6 +33,14 @@ router.route('/products/:product_id')
     .patch(productController.update)
     .put(productController.update)
     .delete(productController.delete);
+router.route('/productAds')
+    .get(productAdController.index)
+    .post(productAdController.new);
+router.route('/productAds/:productAd_id')
+    .get(productAdController.view)
+    .patch(productAdController.update)
+    .put(productAdController.update)
+    .delete(productAdController.delete);
 router.route('/services')
     .get(serviceController.index)
     .post(serviceController.new);

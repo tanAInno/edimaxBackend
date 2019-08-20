@@ -34,13 +34,14 @@ exports.loginfacebook = async function(req, res){
         return user.username
     })
     if (usernameFromResponse.indexOf(req.body.username) > -1){
-        return res.json({status: "login success"})
+        let userFromUsername = await User.findOne({username: req.body.username})
+        return res.json({status: "login success", id: userFromUsername._id})
     }
     let newUser = new User(req.body);
     let hashedPassword = passwordHash.generate(Math.floor(Math.random() * Math.floor(20000))+'');
     newUser.password = hashedPassword
     await newUser.save()
-    return res.json({status: "login success"})
+    return res.json({status: "login success", id: newUser._id})
 }
 
 exports.update = async function(req, res) {
