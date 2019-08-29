@@ -33,6 +33,8 @@ exports.loginfacebook = async function(req, res){
     let usernameFromResponse = userResponse.map((user) => {
         return user.username
     })
+    if (req.body.username == "" || req.body.username == undefined || req.body.username == null)
+        return res.send({status: "login failed"})
     if (usernameFromResponse.indexOf(req.body.username) > -1){
         let userFromUsername = await User.findOne({username: req.body.username})
         return res.json({status: "login success", id: userFromUsername._id})
