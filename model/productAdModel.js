@@ -20,6 +20,10 @@ var productAdSchema = mongoose.Schema({
     description: {
         type: String,
         default: ''
+    },
+    option: {
+        type: String,
+        default: ''
     }
 })
 

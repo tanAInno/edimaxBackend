@@ -23,6 +23,7 @@ exports.new = function (req, res) {
     productAd.type = req.body.type;
     productAd.price = req.body.price;
     productAd.description = req.body.description;
+    productAd.option = req.body.option;
     productAd.save(function (err) {
         if (err)
             res.json(err);
@@ -53,6 +54,7 @@ exports.update = function (req, res) {
         productAd.type = req.body.type;
         productAd.price = req.body.price;
         productAd.description = req.body.description;
+        productAd.option = req.body.option;
         // save the productAd and check for errors
         productAd.save(function (err) {
             if (err)

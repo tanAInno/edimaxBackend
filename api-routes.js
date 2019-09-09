@@ -15,6 +15,7 @@ var serviceController = require('./controller/serviceController');
 var couponController = require('./controller/couponController');
 var userController = require('./controller/userController');
 var productAdController = require('./controller/productAdController');
+var magellanController = require('./controller/magellanController');
 
 // Asset routes
 router.route('/edimaxs')
@@ -25,6 +26,14 @@ router.route('/edimaxs/:edimax_id')
     .patch(edimaxController.update)
     .put(edimaxController.update)
     .delete(edimaxController.delete);
+router.route('/magellans')
+    .get(magellanController.index)
+    .post(magellanController.new);
+router.route('/magellans/:magellan_id')
+    .get(magellanController.view)
+    .patch(magellanController.update)
+    .put(magellanController.update)
+    .delete(magellanController.delete);
 router.route('/products')
     .get(productController.index)
     .post(productController.new);
